@@ -1,6 +1,5 @@
 # 🦅 Garud Vulnerability Scanner & Reconnaissance Engine
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![React](https://img.shields.io/badge/React-18.x-cyan.svg)](https://react.dev/)
 [![Docker](https://img.shields.io/badge/Docker-Supported-blue.svg)](https://www.docker.com/)
