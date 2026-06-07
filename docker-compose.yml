@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  garud-sec-tools:
+    build:
+      context: ./garud-sec-tools
+      dockerfile: Dockerfile
+    container_name: garud-sec-tools
+
+    ports:
+      - "127.0.0.1:8001:8001"
+
+    restart: unless-stopped
+
+    environment:
+      # JVM heap for Tsunami (stays under 3G container limit)
+      JAVA_OPTS: "-Xms128m -Xmx1536m -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+      PYTHONUNBUFFERED: "1"
+
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_RAW   # needed by nmap raw probes
+
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 3G
+        reservations:
+          cpus: "1"
+          memory: 1G
+
+
+    tmpfs:
+      - /tmp:size=256m,mode=1777

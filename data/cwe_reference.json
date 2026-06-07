@@ -1,0 +1,245 @@
+{
+  "CWE-78": {
+    "id": 78,
+    "name": "OS Command Injection",
+    "mitre": "https://cwe.mitre.org/data/definitions/78.html",
+    "cvss": 9.8,
+    "classification": "Critical",
+    "why": "Attackers can manipulate OS commands to execute arbitrary code or access unauthorized server resources.",
+    "fix": "Avoid executing system shell commands with user inputs. Use built-in programming language APIs, validate input strictly, or run commands in restricted sandboxes. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-89": {
+    "id": 89,
+    "name": "SQL Injection",
+    "mitre": "https://cwe.mitre.org/data/definitions/89.html",
+    "cvss": 9.8,
+    "classification": "Critical",
+    "why": "Attackers can manipulate your database queries to steal, delete, or modify data.",
+    "fix": "Use parameterized queries (Prepared Statements) instead of string concatenation. Validate all user inputs. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-79": {
+    "id": 79,
+    "name": "Cross-site Scripting",
+    "mitre": "https://cwe.mitre.org/data/definitions/79.html",
+    "cvss": 6.1,
+    "classification": "Medium",
+    "why": "Attackers can inject malicious scripts that run in the victim's browser, stealing cookies or session tokens.",
+    "fix": "Sanitize all user input and escape data before rendering it in HTML. Implement a Content Security Policy (CSP). See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-352": {
+    "id": 352,
+    "name": "CSRF",
+    "mitre": "https://cwe.mitre.org/data/definitions/352.html",
+    "cvss": 8.8,
+    "classification": "Critical",
+    "why": "Attackers can trick users into performing actions (like changing a password) without their consent.",
+    "fix": "Implement Anti-CSRF tokens in all state-changing forms (POST/PUT/DELETE). See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-918": {
+    "id": 918,
+    "name": "SSRF",
+    "mitre": "https://cwe.mitre.org/data/definitions/918.html",
+    "cvss": 9.1,
+    "classification": "Critical",
+    "why": "Attackers can trick your server into making requests to internal services, cloud metadata endpoints, or other sensitive resources.",
+    "fix": "Validate and sanitize all user-supplied URLs. Implement an allowlist of permitted domains and block internal IP ranges. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-284": {
+    "id": 284,
+    "name": "Broken Access Control",
+    "mitre": "https://cwe.mitre.org/data/definitions/284.html",
+    "cvss": 8.2,
+    "classification": "Critical",
+    "why": "Users can access resources or perform actions beyond their intended permissions, potentially viewing other users' data.",
+    "fix": "Implement server-side authorization checks on every request. Deny access by default and use role-based access control. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-798": {
+    "id": 798,
+    "name": "Hard-coded Credentials",
+    "mitre": "https://cwe.mitre.org/data/definitions/798.html",
+    "cvss": 9.8,
+    "classification": "Critical",
+    "why": "Exposed hardcoded passwords, API keys, or secrets can be extracted by attackers to gain unauthorized access.",
+    "fix": "Remove all hardcoded credentials. Retrieve configuration secrets at runtime from safe environment variables or key vaults. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-200": {
+    "id": 200,
+    "name": "Information Exposure",
+    "mitre": "https://cwe.mitre.org/data/definitions/200.html",
+    "cvss": 5.3,
+    "classification": "Medium",
+    "why": "Headers, debug logs, or database ports exposure can reveal your technology stack or sensitive data, helping attackers choose targeted exploits.",
+    "fix": "Remove or mask version-revealing headers in your server config. Block access to public configuration directories. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-319": {
+    "id": 319,
+    "name": "Cleartext Transmission",
+    "mitre": "https://cwe.mitre.org/data/definitions/319.html",
+    "cvss": 7.5,
+    "classification": "Critical",
+    "why": "Insecure protocols like HTTP, Telnet, or FTP send data in plaintext, allowing network attackers to sniff credentials.",
+    "fix": "Enforce HTTPS with TLS 1.2+, disable legacy protocols/ciphers, and replace FTP/Telnet with SFTP/SSH. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-310": {
+    "id": 310,
+    "name": "Cryptographic Issues",
+    "mitre": "https://cwe.mitre.org/data/definitions/310.html",
+    "cvss": 7.4,
+    "classification": "Critical",
+    "why": "Weak or missing encryption exposes sensitive data in transit. Attackers can intercept passwords, tokens, and personal information.",
+    "fix": "Enforce HTTPS with TLS 1.2+. Disable legacy protocols (TLS 1.0/1.1) and weak ciphers (RC4, DES, 3DES). Use HSTS headers. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-693": {
+    "id": 693,
+    "name": "Protection Mechanism Failure",
+    "mitre": "https://cwe.mitre.org/data/definitions/693.html",
+    "cvss": 4.3,
+    "classification": "Medium",
+    "why": "Your server isn't instructing the browser on how to behave securely, leaving it open to Clickjacking or XSS.",
+    "fix": "Configure your web server to send headers like 'X-Frame-Options', 'Strict-Transport-Security', and 'Content-Security-Policy'. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-770": {
+    "id": 770,
+    "name": "Allocation without Limits",
+    "mitre": "https://cwe.mitre.org/data/definitions/770.html",
+    "cvss": 5.3,
+    "classification": "Medium",
+    "why": "Without rate limiting, attackers can brute-force credentials, scrape data, or overwhelm your server with automated requests.",
+    "fix": "Implement rate limiting at the application or reverse proxy level (e.g. Nginx limit_req, express-rate-limit). See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-400": {
+    "id": 400,
+    "name": "Uncontrolled Resource Consumption",
+    "mitre": "https://cwe.mitre.org/data/definitions/400.html",
+    "cvss": 7.5,
+    "classification": "Critical",
+    "why": "The server may be vulnerable to denial-of-service attacks that can take the application offline for legitimate users.",
+    "fix": "Deploy a WAF or DDoS protection service (e.g. Cloudflare). Implement connection and request rate limits. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-353": {
+    "id": 353,
+    "name": "Missing Integrity Check",
+    "mitre": "https://cwe.mitre.org/data/definitions/353.html",
+    "cvss": 5.9,
+    "classification": "Medium",
+    "why": "External scripts loaded without Subresource Integrity hashes can be tampered with if the CDN is compromised, injecting malicious code.",
+    "fix": "Add integrity and crossorigin attributes to all external script/link tags. Generate hashes at srihash.org. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-538": {
+    "id": 538,
+    "name": "Insertion of Sensitive Info into Externally-Accessible File",
+    "mitre": "https://cwe.mitre.org/data/definitions/538.html",
+    "cvss": 5.3,
+    "classification": "Medium",
+    "why": "Files like .git/config, package.json, or CI configs are publicly accessible, potentially exposing source code and credentials.",
+    "fix": "Block access to sensitive paths in your web server config. For Nginx: 'location ~* /\\.git { deny all; }'. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-1104": {
+    "id": 1104,
+    "name": "Use of Unmaintained Third-Party Components",
+    "mitre": "https://cwe.mitre.org/data/definitions/1104.html",
+    "cvss": 6.5,
+    "classification": "Medium",
+    "why": "Running outdated libraries with known CVEs gives attackers a ready-made exploit path into your application.",
+    "fix": "Upgrade the flagged library to the minimum safe version. Use automated dependency scanning (e.g. Dependabot). See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-915": {
+    "id": 915,
+    "name": "Improperly Controlled Modification of Dynamically-Determined Object Attributes",
+    "mitre": "https://cwe.mitre.org/data/definitions/915.html",
+    "cvss": 7.5,
+    "classification": "Critical",
+    "why": "Allowing clients to bind input parameters to internal object properties can let them overwrite restricted fields like isAdmin.",
+    "fix": "Use Data Transfer Objects (DTOs) or explicit binding lists to specify exactly which properties can be modified by the client. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-862": {
+    "id": 862,
+    "name": "Missing Authorization",
+    "mitre": "https://cwe.mitre.org/data/definitions/862.html",
+    "cvss": 8.5,
+    "classification": "Critical",
+    "why": "Endpoints are accessible without validating if the user has permission, letting unauthenticated or lower-privileged users access restricted functions.",
+    "fix": "Enforce backend authorization checks on all endpoints. Verify user privileges before processing requests. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-639": {
+    "id": 639,
+    "name": "Insecure Direct Object Reference (IDOR)",
+    "mitre": "https://cwe.mitre.org/data/definitions/639.html",
+    "cvss": 8.1,
+    "classification": "Critical",
+    "why": "User-supplied parameters (like IDs) are used directly to look up database records without verifying the requesting user owns that resource.",
+    "fix": "Implement access control checks verifying that the authenticated user owns or is authorized to access the requested resource ID. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-285": {
+    "id": 285,
+    "name": "Improper Authorization",
+    "mitre": "https://cwe.mitre.org/data/definitions/285.html",
+    "cvss": 7.8,
+    "classification": "Critical",
+    "why": "Access control rules are applied incorrectly, such as relying on easily spoofable request headers (e.g. X-Forwarded-For or X-Original-URL) instead of verified session state.",
+    "fix": "Perform all access control checks on the server side using cryptographically signed session tokens. Do not trust client-supplied HTTP headers for security decisions. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-863": {
+    "id": 863,
+    "name": "Incorrect Authorization",
+    "mitre": "https://cwe.mitre.org/data/definitions/863.html",
+    "cvss": 7.5,
+    "classification": "Critical",
+    "why": "Authorization logic can be bypassed by appending specific suffixes or abusing path parsing differences (path confusion) between reverse proxies and backends.",
+    "fix": "Normalize and sanitize all request paths before performing authorization checks. Maintain uniform path mapping across proxies and backend application routing. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-269": {
+    "id": 269,
+    "name": "Improper Privilege Management",
+    "mitre": "https://cwe.mitre.org/data/definitions/269.html",
+    "cvss": 8.0,
+    "classification": "Critical",
+    "why": "The application trusts client-supplied query parameters or form fields (like role=admin) to determine user privileges, allowing privilege escalation.",
+    "fix": "Determine user permissions solely from backend session state retrieved via a secure session identifier. Never trust client-supplied privilege parameters. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-306": {
+    "id": 306,
+    "name": "Missing Authentication for Critical Function",
+    "mitre": "https://cwe.mitre.org/data/definitions/306.html",
+    "cvss": 9.8,
+    "classification": "Critical",
+    "why": "Critical operations (like state-changing form submissions) are exposed without authentication, allowing anonymous callers to execute privileged actions.",
+    "fix": "Require valid authentication tokens (e.g., sessions, JWTs) for all state-changing endpoints (POST/PUT/DELETE). See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-942": {
+    "id": 942,
+    "name": "Permissive CORS Policy with Credentials",
+    "mitre": "https://cwe.mitre.org/data/definitions/942.html",
+    "cvss": 6.5,
+    "classification": "Medium",
+    "why": "The server reflects arbitrary Origin headers in its Access-Control-Allow-Origin response and enables credentials, allowing malicious sites to read sensitive user data.",
+    "fix": "Never use wildcard or reflected origins when Access-Control-Allow-Credentials is set to true. Implement a strict allowlist of trusted origin domains. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-643": {
+    "id": 643,
+    "name": "Improper Neutralization of Data Vulnerability in a Website ('XPath Injection')",
+    "mitre": "https://cwe.mitre.org/data/definitions/643.html",
+    "cvss": 9.8,
+    "classification": "Critical",
+    "why": "Attackers can manipulate XML/XPath query structure to bypass authentication or extract sensitive XML database records.",
+    "fix": "Use parameterized/variable-binding XPath APIs, validate input with strict allowlists, and return generic error messages rather than XML/XPath engine output. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-22": {
+    "id": 22,
+    "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+    "mitre": "https://cwe.mitre.org/data/definitions/22.html",
+    "cvss": 8.5,
+    "classification": "Critical",
+    "why": "Attackers can use special character sequences like '../' to escape the web root and read or write arbitrary files on the server's filesystem.",
+    "fix": "Avoid passing user input directly to filesystem APIs. Use canonical paths verification, strict filename allowlisting, or store files using randomized IDs. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  },
+  "CWE-548": {
+    "id": 548,
+    "name": "Exposure of Information Through Directory Listing",
+    "mitre": "https://cwe.mitre.org/data/definitions/548.html",
+    "cvss": 5.3,
+    "classification": "Medium",
+    "why": "Web servers configured to list directory contents allow attackers to discover hidden files, backups, and directory structures.",
+    "fix": "Disable directory indexing (Options -Indexes in Apache, autoindex off in Nginx). Place default index.html files in all web-accessible folders. See https://cwe.mitre.org/data/definitions/699.html for software development guidance."
+  }
+}
