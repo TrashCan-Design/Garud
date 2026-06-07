@@ -183,43 +183,52 @@ git clone https://github.com/your-username/garud-project.git
 cd garud-project
 ```
 
-### 2. Configure Environment Variables
-Create a `.env` file in the root directory:
-```env
-SECRET_KEY=supersecretkeyplaceholder
-SEC_TOOLS_URL=http://127.0.0.1:8001
-PORT=7000
+### 2. Security Tools Gateway (Docker)
+```bash
+cd garud-sec-tools
+docker build -t garud-sec-tools .
+docker run -d -p 8001:8001 garud-sec-tools
 ```
 
-### 3. Deploy the Security Tools Container
-Build and run the Docker containers for external scanning tools:
-```bash
-docker compose up -d --build
-```
-Verify the gateway is active by visiting `http://localhost:8001/docs` in your browser.
+### 3. Flask Backend Orchestrator
 
-### 4. Set Up the Flask Backend
-```bash
+#### 💻 Windows (PowerShell)
+```powershell
 cd garud-backend
 python -m venv venv
-# Windows
-venv\Scripts\activate
-# Linux/macOS
-source venv/bin/activate
-
+.\venv\Scripts\activate
 pip install -r requirements.txt
-python -m playwright install chromium
+$env:SEC_TOOLS_URL="http://127.0.0.1:8001"
 python server.py
 ```
-The Flask orchestrator will run on `http://127.0.0.1:7000`.
 
-### 5. Start the React Frontend
+#### 💻 Windows (Command Prompt)
+```cmd
+cd garud-backend
+python -m venv venv
+call venv\Scripts\activate
+pip install -r requirements.txt
+set SEC_TOOLS_URL=http://127.0.0.1:8001
+python server.py
+```
+
+#### 🐧 Linux (Bash)
 ```bash
-cd ../garud-frontend
+cd garud-backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+playwright install --with-deps chromium
+export SEC_TOOLS_URL="http://127.0.0.1:8001"
+python server.py
+```
+
+### 4. React Frontend
+```bash
+cd garud-frontend
 npm install
 npm start
 ```
-The dashboard will launch on `http://localhost:3000`.
 
 ---
 
