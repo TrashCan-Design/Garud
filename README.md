@@ -257,12 +257,6 @@ We welcome contributions to the Garud engine. To maintain quality across the cod
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
 ## 💖 Acknowledgments
 
 - The creators of the **OWASP Top 10** project for security classifications.
