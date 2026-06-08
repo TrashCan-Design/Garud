@@ -179,8 +179,8 @@ services:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/garud-project.git
-cd garud-project
+git clone https://github.com/TrashCan-Design/Garud.git
+cd Garud
 ```
 
 ### 2. Security Tools Gateway (Docker)
